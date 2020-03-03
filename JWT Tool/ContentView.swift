@@ -9,15 +9,32 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        Text("Hello, World!")
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+  @State var jwtToken = ""
+  var body: some View {
+    HStack{
+      TextField("JWT Token", text: $jwtToken)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding()
+      VStack(alignment: .trailing) {
+        Text("Header")
+          .frame(maxWidth: .infinity, maxHeight: .infinity)
+          .padding()
+        Spacer()
+        Text("Payload")
+          .frame(maxWidth: .infinity, maxHeight: .infinity)
+          .padding()
+        Spacer()
+        Text("Signature")
+          .frame(maxWidth: .infinity, maxHeight: .infinity)
+          .padding()
+      }
     }
+  }
 }
 
 
 struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+  static var previews: some View {
+    ContentView()
+  }
 }
