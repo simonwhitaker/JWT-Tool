@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F405E76124143315006A5D32 /* JWT_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F405E76024143315006A5D32 /* JWT_Tests.swift */; };
+		F405E7622414337B006A5D32 /* JWT.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42CFBA024141E8F0046122C /* JWT.swift */; };
+		F42CFBA124141E8F0046122C /* JWT.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42CFBA024141E8F0046122C /* JWT.swift */; };
 		F443D5C8240E29B200B5B6DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F443D5C7240E29B200B5B6DC /* AppDelegate.swift */; };
 		F443D5CA240E29B200B5B6DC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F443D5C9240E29B200B5B6DC /* ContentView.swift */; };
 		F443D5CC240E29B400B5B6DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F443D5CB240E29B400B5B6DC /* Assets.xcassets */; };
@@ -34,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F405E76024143315006A5D32 /* JWT_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWT_Tests.swift; sourceTree = "<group>"; };
+		F42CFBA024141E8F0046122C /* JWT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWT.swift; sourceTree = "<group>"; };
 		F443D5C4240E29B200B5B6DC /* JWT Tool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JWT Tool.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F443D5C7240E29B200B5B6DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F443D5C9240E29B200B5B6DC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -105,6 +110,8 @@
 				F443D5D3240E29B400B5B6DC /* Info.plist */,
 				F443D5D4240E29B400B5B6DC /* JWT_Tool.entitlements */,
 				F443D5CD240E29B400B5B6DC /* Preview Content */,
+				F42CFBA024141E8F0046122C /* JWT.swift */,
+				F405E76024143315006A5D32 /* JWT_Tests.swift */,
 			);
 			path = "JWT Tool";
 			sourceTree = "<group>";
@@ -268,6 +275,7 @@
 			files = (
 				F443D5CA240E29B200B5B6DC /* ContentView.swift in Sources */,
 				F443D5C8240E29B200B5B6DC /* AppDelegate.swift in Sources */,
+				F42CFBA124141E8F0046122C /* JWT.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +284,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F443D5DE240E29B400B5B6DC /* JWT_ToolTests.swift in Sources */,
+				F405E76124143315006A5D32 /* JWT_Tests.swift in Sources */,
+				F405E7622414337B006A5D32 /* JWT.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,6 +442,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "JWT Tool/JWT_Tool.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"JWT Tool/Preview Content\"";
@@ -455,6 +466,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "JWT Tool/JWT_Tool.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"JWT Tool/Preview Content\"";
