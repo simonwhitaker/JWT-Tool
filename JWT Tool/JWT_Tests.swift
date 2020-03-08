@@ -22,16 +22,33 @@ class JWT_Tests: XCTestCase {
     let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
     do {
       let jwt = try JWT(token)
-      print(jwt.payload)
+      XCTAssertEqual(jwt.header.parsedJSON["typ"] as! String, "JWT")
+      XCTAssertEqual(jwt.header.parsedJSON["alg"] as! String, "HS256")
+      XCTAssertEqual(jwt.payload.parsedJSON["name"] as! String, "John Doe")
+      XCTAssertEqual(jwt.payload.parsedJSON["iat"] as! Int, 1516239022)
+      XCTAssertEqual(jwt.payload.parsedJSON["sub"] as! String, "1234567890")
     } catch {
       XCTFail()
     }
   }
   
-  func testInvalidJWT() {
+  func testInvalidJWTStructure() {
     XCTAssertThrowsError(try JWT("a")) {
       error in
         XCTAssertEqual(error as! JWTError, JWTError.InvalidJWT)
+    }
+  }
+
+  func testInvalidJWTEncoding() {
+    XCTAssertThrowsError(try JWT("*.*.*")) {
+      error in
+      XCTAssertEqual(error as! JWTError, JWTError.InvalidB64Encoding)
+    }
+  }
+  func testInvalidJSONContent() {
+    XCTAssertThrowsError(try JWT("Zm9v.Zm9v.Zm9v")) {
+      error in
+      XCTAssertEqual(error as! JWTError, JWTError.InvalidJSONContent)
     }
   }
 }

@@ -11,12 +11,34 @@ import Foundation
 enum JWTError: Error {
   case InvalidJWT
   case InvalidB64Encoding
-  case InvalidUTF8Content
+  case InvalidJSONContent
+}
+
+struct JWTClaim {
+  private(set) public var rawData: Data
+  private(set) public var parsedJSON: [String: Any]
+  private(set) public var formattedString: String
+  
+  init(_ raw: Data) throws {
+    rawData = raw
+    do {
+      let result = try JSONSerialization.jsonObject(with: rawData, options: [])
+      guard let typedResult = result as? [String: Any] else {
+        throw JWTError.InvalidJSONContent
+      }
+      parsedJSON = typedResult
+    } catch {
+      throw JWTError.InvalidJSONContent
+    }
+    
+    let formattedData = try JSONSerialization.data(withJSONObject: parsedJSON, options: .prettyPrinted)
+    formattedString = String(data: formattedData, encoding: .utf8)!
+  }
 }
 
 public struct JWT {
-  var header: String
-  var payload: String
+  var header: JWTClaim
+  var payload: JWTClaim
   var signature: Data
 
   init(_ token: String) throws {
@@ -25,13 +47,13 @@ public struct JWT {
       throw JWTError.InvalidJWT
     }
     
-    try header = utf8(b64url_decode(String(elements[0])))
-    try payload = utf8(b64url_decode(String(elements[1])))
-    try signature = b64url_decode(String(elements[2]))
+    try header = JWTClaim(base64URLDecode(String(elements[0])))
+    try payload = JWTClaim(base64URLDecode(String(elements[1])))
+    try signature = base64URLDecode(String(elements[2]))
   }
 }
 
-func b64url_decode(_ s: String) throws -> Data {
+func base64URLDecode(_ s: String) throws -> Data {
   let length = s.lengthOfBytes(using: .utf8)
   let paddedString: String
   if (length % 4 > 0) {
@@ -47,9 +69,3 @@ func b64url_decode(_ s: String) throws -> Data {
   return d
 }
 
-func utf8(_ d: Data) throws -> String {
-  guard let s = String(data: d, encoding: .utf8) else {
-    throw JWTError.InvalidUTF8Content
-  }
-  return s
-}
