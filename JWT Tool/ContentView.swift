@@ -9,29 +9,22 @@
 import SwiftUI
 
 struct ContentView: View {
-  @State var jwtToken = ""
+  @State var jwtToken: JWT = try! JWT("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c")
   var body: some View {
     HStack{
-      TextField("JWT Token", text: $jwtToken)
+      TextView("JWT Token", text: $jwtToken.rawToken)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .padding()
       VStack(alignment: .trailing) {
-        Text("Header")
+        TextView("Header", text: $jwtToken.header.formattedString)
           .frame(maxWidth: .infinity, maxHeight: .infinity)
-          .padding()
-        Spacer()
-        Text("Payload")
+        TextView("Payload", text: $jwtToken.payload.formattedString)
           .frame(maxWidth: .infinity, maxHeight: .infinity)
-          .padding()
-        Spacer()
-        Text("Signature")
+        TextView("Signature", text: $jwtToken.encodedSignature)
           .frame(maxWidth: .infinity, maxHeight: .infinity)
-          .padding()
       }
     }
   }
 }
-
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {

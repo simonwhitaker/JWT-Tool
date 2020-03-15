@@ -17,7 +17,7 @@ enum JWTError: Error {
 struct JWTClaim {
   private(set) public var rawData: Data
   private(set) public var parsedJSON: [String: Any]
-  private(set) public var formattedString: String
+  public var formattedString: String
   
   init(_ raw: Data) throws {
     rawData = raw
@@ -40,8 +40,11 @@ public struct JWT {
   var header: JWTClaim
   var payload: JWTClaim
   var signature: Data
+  var encodedSignature: String
+  var rawToken: String
 
   init(_ token: String) throws {
+    rawToken = token
     let elements = token.split(separator: ".")
     if elements.count != 3 {
       throw JWTError.InvalidJWT
@@ -49,7 +52,8 @@ public struct JWT {
     
     try header = JWTClaim(base64URLDecode(String(elements[0])))
     try payload = JWTClaim(base64URLDecode(String(elements[1])))
-    try signature = base64URLDecode(String(elements[2]))
+    encodedSignature = String(elements[2])
+    try signature = base64URLDecode(encodedSignature)
   }
 }
 

@@ -17,6 +17,7 @@
 		F443D5D2240E29B400B5B6DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F443D5D0240E29B400B5B6DC /* Main.storyboard */; };
 		F443D5DE240E29B400B5B6DC /* JWT_ToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F443D5DD240E29B400B5B6DC /* JWT_ToolTests.swift */; };
 		F443D5E9240E29B400B5B6DC /* JWT_ToolUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F443D5E8240E29B400B5B6DC /* JWT_ToolUITests.swift */; };
+		F4EA66F0241E78840001FEF7 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA66EF241E78840001FEF7 /* TextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		F443D5E4240E29B400B5B6DC /* JWT ToolUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JWT ToolUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F443D5E8240E29B400B5B6DC /* JWT_ToolUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWT_ToolUITests.swift; sourceTree = "<group>"; };
 		F443D5EA240E29B400B5B6DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4EA66EF241E78840001FEF7 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				F443D5CD240E29B400B5B6DC /* Preview Content */,
 				F42CFBA024141E8F0046122C /* JWT.swift */,
 				F405E76024143315006A5D32 /* JWT_Tests.swift */,
+				F4EA66EF241E78840001FEF7 /* TextView.swift */,
 			);
 			path = "JWT Tool";
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 			files = (
 				F443D5CA240E29B200B5B6DC /* ContentView.swift in Sources */,
 				F443D5C8240E29B200B5B6DC /* AppDelegate.swift in Sources */,
+				F4EA66F0241E78840001FEF7 /* TextView.swift in Sources */,
 				F42CFBA124141E8F0046122C /* JWT.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
